@@ -13,6 +13,8 @@
 		248CD6061BD60BD400752C82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248CD6041BD60BD400752C82 /* Main.storyboard */; };
 		248CD6081BD60BD400752C82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 248CD6071BD60BD400752C82 /* Assets.xcassets */; };
 		248CD60B1BD60BD400752C82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248CD6091BD60BD400752C82 /* LaunchScreen.storyboard */; };
+		248CD6141BD60D9300752C82 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248CD6131BD60D9300752C82 /* CoreImage.framework */; };
+		248CD6161BD60EAE00752C82 /* FaceBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 248CD6151BD60EAE00752C82 /* FaceBlurFilter.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		248CD6071BD60BD400752C82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		248CD60A1BD60BD400752C82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		248CD60C1BD60BD400752C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		248CD6121BD60D7000752C82 /* FaceBlurFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceBlurFilter.h; sourceTree = "<group>"; };
+		248CD6131BD60D9300752C82 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		248CD6151BD60EAE00752C82 /* FaceBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBlurFilter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				248CD6141BD60D9300752C82 /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +48,7 @@
 		248CD5EF1BD60BD300752C82 = {
 			isa = PBXGroup;
 			children = (
+				248CD6131BD60D9300752C82 /* CoreImage.framework */,
 				248CD5FA1BD60BD400752C82 /* CoreImageDemo */,
 				248CD5F91BD60BD400752C82 /* Products */,
 			);
@@ -58,6 +65,7 @@
 		248CD5FA1BD60BD400752C82 /* CoreImageDemo */ = {
 			isa = PBXGroup;
 			children = (
+				248CD6171BD60F6A00752C82 /* Filters */,
 				248CD5FE1BD60BD400752C82 /* AppDelegate.h */,
 				248CD5FF1BD60BD400752C82 /* AppDelegate.m */,
 				248CD6011BD60BD400752C82 /* ViewController.h */,
@@ -77,6 +85,15 @@
 				248CD5FC1BD60BD400752C82 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		248CD6171BD60F6A00752C82 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				248CD6121BD60D7000752C82 /* FaceBlurFilter.h */,
+				248CD6151BD60EAE00752C82 /* FaceBlurFilter.m */,
+			);
+			name = Filters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +127,7 @@
 				TargetAttributes = {
 					248CD5F71BD60BD300752C82 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = FX7XPL9883;
 					};
 				};
 			};
@@ -150,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				248CD6031BD60BD400752C82 /* ViewController.m in Sources */,
+				248CD6161BD60EAE00752C82 /* FaceBlurFilter.m in Sources */,
 				248CD6001BD60BD400752C82 /* AppDelegate.m in Sources */,
 				248CD5FD1BD60BD400752C82 /* main.m in Sources */,
 			);
@@ -263,10 +282,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CoreImageDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andhiekaputra.CoreImageDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -274,10 +297,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CoreImageDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andhiekaputra.CoreImageDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
