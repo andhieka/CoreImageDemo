@@ -31,12 +31,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // create CIImage
+    _originalImage = [CIImage imageWithCGImage:[UIImage imageNamed:@"family"].CGImage];
+
+    // create CIContext
     _eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     _context = [CIContext contextWithEAGLContext:_eaglContext
-                                         options:@{
-                                                   kCIContextWorkingColorSpace: [NSNull null]
-                                                   }];
-    _originalImage = [CIImage imageWithCGImage:[UIImage imageNamed:@"family"].CGImage];
+                                         options:@{ kCIContextWorkingColorSpace: [NSNull null] }];
+    
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapImageView:)];
     tapGesture.numberOfTapsRequired = 2;
@@ -84,14 +87,14 @@
 - (void)processAndRenderImage {
     CIImage *result = self.originalImage;
     
-    // apply face blur effect if activated and if brightness is not being adjusted
+    // CIFilter 1: apply face blur effect if activated and if brightness is not being adjusted
     if (CGPointEqualToPoint(self.lastPanPoint, CGPointZero) && self.isBlurActive) {
         FaceBlurFilter *faceBlurFilter = [[FaceBlurFilter alloc] init];
         faceBlurFilter.inputImage = result;
         result = faceBlurFilter.outputImage;
     }
 
-    // apply brightness adjustment
+    // CIFilter 2: apply brightness adjustment
     result = [self processBrightness:result];
 
     [self renderImage:result];
